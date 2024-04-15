@@ -3,6 +3,7 @@ import axios from 'axios';
 import Autosuggest from 'react-autosuggest';
 import { useNavigate } from 'react-router-dom';
 import './table.css';
+import {Table} from 'react-bootstrap';
 
 const CityTable: React.FC = () => {
   const [cities, setCities] = useState<any[]>([]);
@@ -83,7 +84,7 @@ const CityTable: React.FC = () => {
         inputProps={inputProps}
       />
 
-      <table className='table' border={1}>
+      <Table className='table' striped bordered hover variant="dark" size="sm">
         <thead>
           <tr>
             <th>City Name</th>
@@ -100,7 +101,7 @@ const CityTable: React.FC = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };

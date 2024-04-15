@@ -1,9 +1,7 @@
 .container {
   text-align: center;
   margin-top: 20px;
-  animation: fadeIn 0.5s ease-in-out;
-  background-color: purple;
-  padding: 20px; /* Added padding for better spacing */
+  animation: fadeIn 0.5s ease-in-out; /* Added padding for better spacing */
 }
 
 body {
@@ -31,7 +29,7 @@ a:hover {
 
 .table {
   width: 80%;
-  margin: 0 auto;
+  margin: auto;
   border-collapse: collapse;
   animation: slideInFromLeft 0.5s ease-in-out;
 }
