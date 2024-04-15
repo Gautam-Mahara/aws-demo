@@ -5,6 +5,7 @@ import '../App.css';
 import './forecast.css'
 import { Bar } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
+import { url } from 'inspector';
 
 Chart.register(...registerables);
 
@@ -13,6 +14,7 @@ const CityWeather: React.FC = () => {
   const [weatherData, setWeatherData] = useState<any>(null);
   const [forecastData, setForecastData] = useState<any[]>([]);
   const location = useLocation();
+  const backgrounddata = useState<any>('../../public/rain-background.jpg');
   const query = new URLSearchParams(location.search);
   const lon = query.get('lon');
   const lat = query.get('lat');
@@ -41,7 +43,7 @@ const CityWeather: React.FC = () => {
       fetchData();
     }
   }, [lat, lon]);
-
+  
   return (
     <div className="city-weather app">
       {/* Current weather */}
@@ -82,8 +84,9 @@ const CityWeather: React.FC = () => {
                       datasets: [{
                         label: 'Temperature',
                         data: forecastData.map((forecast) => forecast.main.temp - 273.15),
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        backgroundColor: 'rgba(230, 126, 34, 0.6)',
                       }]
+                      
                     }}
                   />
                 </div>
