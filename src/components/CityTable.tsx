@@ -70,7 +70,10 @@ const CityTable: React.FC = () => {
     value: searchQuery,
     onChange: handleSearchChange
   };
-
+  const handleClickC = (lon: number, lat: number) => () => {
+    navigate(`/rooms/new?lon=${lon}&lat=${lat}`);
+  };
+  
   return (
     <div className='container'>
       <h1 className='header-style'>Cities Table</h1>
@@ -83,8 +86,8 @@ const CityTable: React.FC = () => {
         onSuggestionSelected={onSuggestionSelected}
         inputProps={inputProps}
       />
-
-      <Table className='table' striped bordered hover variant="dark" size="sm">
+      
+      <Table className='' striped bordered hover variant="dark" size="sm">
         <thead>
           <tr>
             <th>City Name</th>
@@ -94,8 +97,8 @@ const CityTable: React.FC = () => {
         </thead>
         <tbody>
           {cities.map((city) => (
-            <tr key={city.geoname_id}>
-              <td><a href={`/rooms/new?lon=${city.coordinates.lon}&lat=${city.coordinates.lat}`}  target="_blank">{city.name}</a></td>
+            <tr key={city.geoname_id}  onClick={handleClickC(city.coordinates.lon,city.coordinates.lat)}>
+              <td><a href={`/rooms/new?lon=${city.coordinates.lon}&lat=${city.coordinates.lat}`}  rel="noreferrer" target="_blank">{city.name}</a></td>
               <td>{city.cou_name_en}</td>
               <td>{city.timezone}</td>
             </tr>
