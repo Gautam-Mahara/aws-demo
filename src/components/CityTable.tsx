@@ -72,8 +72,8 @@ const CityTable: React.FC = () => {
 
   return (
     <div className='container'>
-      <h1>Cities Table</h1>
-      <Autosuggest
+      <h1 className='header-style'>Cities Table</h1>
+      <Autosuggest 
         suggestions={suggestions}
         onSuggestionsFetchRequested={onSuggestionsFetchRequested}
         onSuggestionsClearRequested={onSuggestionsClearRequested}
@@ -83,7 +83,7 @@ const CityTable: React.FC = () => {
         inputProps={inputProps}
       />
 
-      <table className='table'>
+      <table className='table' border={1}>
         <thead>
           <tr>
             <th>City Name</th>
