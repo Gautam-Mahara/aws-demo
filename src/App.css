@@ -2,16 +2,17 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@media only screen and (max-width: 768px) {
+  .box {
+    width: 90%;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  /* Remove flex layout for .flex-row */
+  .flex-row {
+    display: block;
   }
 }
+
 
 .App-header {
   background-color: #282c34;

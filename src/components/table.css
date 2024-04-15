@@ -1,58 +1,57 @@
 .container {
-    text-align: center;
-    margin-top: 20px;
-    animation: fadeIn 0.5s ease-in-out;
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.body{
+  background-color: aqua;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  .body{
-    background-color: aqua;
+  to {
+    opacity: 1;
   }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+}
+
+.table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  animation: slideInFromLeft 0.5s ease-in-out;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
   }
-  
-  .table {
-    width: 80%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    animation: slideInFromLeft 0.5s ease-in-out;
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
-  
-  @keyframes slideInFromLeft {
-    from {
-      transform: translateX(-50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+  animation: highlightRow 0.3s ease;
+}
+
+@keyframes highlightRow {
+  50% {
+    background-color: #e0e0e0;
   }
-  
-  .table th,
-  .table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    transition: background-color 0.3s ease;
-  }
-  
-  .table th {
-    background-color: #f2f2f2;
-  }
-  
-  .table tr:hover {
-    background-color: #f5f5f5;
-    cursor: pointer;
-    animation: highlightRow 0.3s ease;
-  }
-  
-  @keyframes highlightRow {
-    50% {
-      background-color: #e0e0e0;
-    }
-  }
-  
+}
