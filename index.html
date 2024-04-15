@@ -1,0 +1,55 @@
+<!-- <form>
+    Name: <input type="text" id="A1"><br><br>
+    Password: <input type="password" id="A2"><br><br>
+    Email: <input type="text" id="A3"><br><br>
+    <button onclick="validate()">Submit</button>
+    <script>
+        function validate() {
+            const name = document.getElementById("A1").value;
+            const password = document.getElementById("A2").value;
+            const email = document.getElementById("A3").value;
+            const namePattern = /^[a-zA-Z\s]+$/;
+            const emailPattern = /\S+@\S+\.\S+/;
+            const passwordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9\s]+$/;
+            
+            if (!namePattern.test(name) || name.length < 3) {
+                alert("Enter a valid name greater than 2 characters.");
+            } else if (!passwordPattern.test(password) || password.length < 8) {
+                alert("Password should be at least 8 characters long and contain at least one alphabetic and one numeric character.");
+            } else if (!emailPattern.test(email) || email.length < 7) {
+                alert("Enter a valid email address.");
+            } else {
+                alert("Submission completed.");
+            }
+        }
+    </script>
+</form> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Element Dynamically</title>
+</head>
+<body>
+    <div id="container">
+        <button id="createButton">Create Element</button>
+    </div>
+
+    <script>
+        document.getElementById("createButton").addEventListener("click", function() {
+            // Create a new element (in this case, a paragraph)
+            const newElement = document.createElement("p");
+
+            // Set some text content for the new element
+            newElement.textContent = "This is a dynamically created paragraph.";
+
+            // Append the new element to the container div
+            document.getElementById("container").appendChild(newElement);
+        });
+    </script>
+</body>
+</html> -->
+
+
