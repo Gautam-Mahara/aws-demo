@@ -70,10 +70,6 @@ const CityTable: React.FC = () => {
     onChange: handleSearchChange
   };
 
-  const Work = (lon: number, lat: number) => () => {
-    navigate(`/rooms/new?lon=${lon}&lat=${lat}`);
-  }
-
   return (
     <div className='container'>
       <h1>Cities Table</h1>
@@ -97,8 +93,8 @@ const CityTable: React.FC = () => {
         </thead>
         <tbody>
           {cities.map((city) => (
-            <tr key={city.geoname_id} className='table-row' onClick={Work(city.coordinates.lon, city.coordinates.lat)}>
-              <td>{city.name}</td>
+            <tr key={city.geoname_id}>
+              <td><a href={`/rooms/new?lon=${city.coordinates.lon}&lat=${city.coordinates.lat}`}  target="_blank">{city.name}</a></td>
               <td>{city.cou_name_en}</td>
               <td>{city.timezone}</td>
             </tr>

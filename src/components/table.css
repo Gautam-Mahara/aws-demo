@@ -6,6 +6,14 @@
   .body{
     background-color: aqua;
   }
+  a {
+    color: inherit; /* This will make the link color the same as its parent element */
+    text-decoration: none; /* Optional: Removes underline */
+  }
+  
+  a:hover {
+    /* Optional: Define hover color */
+  }
   @keyframes fadeIn {
     from {
       opacity: 0;

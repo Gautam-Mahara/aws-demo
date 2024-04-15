@@ -2,19 +2,18 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../App.css';
-import './forecast.css'
+import './forecast.css';
 import { Bar } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 import { url } from 'inspector';
 
 Chart.register(...registerables);
 
-
 const CityWeather: React.FC = () => {
   const [weatherData, setWeatherData] = useState<any>(null);
   const [forecastData, setForecastData] = useState<any[]>([]);
+  const [weatherBackground, setWeatherBackground] = useState<string>(''); // State for dynamic background
   const location = useLocation();
-  const backgrounddata = useState<any>('../../public/rain-background.jpg');
   const query = new URLSearchParams(location.search);
   const lon = query.get('lon');
   const lat = query.get('lat');
@@ -34,6 +33,9 @@ const CityWeather: React.FC = () => {
         );
         setForecastData(forecastResponse.data.list);
 
+        // Set background based on weather description
+        setWeatherBackground(getWeatherBackground(weatherResponse.data.weather[0].description));
+
       } catch (error) {
         console.error('Error fetching weather data:', error);
       }
@@ -43,15 +45,28 @@ const CityWeather: React.FC = () => {
       fetchData();
     }
   }, [lat, lon]);
-  
+
+  // Function to determine background based on weather description
+  const getWeatherBackground = (description: string) => {
+    if (description.includes('rain')) {
+      return 'rainy';
+    } else if (description.includes('cloud')) {
+      return 'cloudy';
+    } else if (description.includes('clear') || description.includes('sun')) {
+      return 'sunny';
+    } else {
+      return '';
+    }
+  };
+
   return (
-    <div className="city-weather app">
+    <div className={`city-weather app ${weatherBackground}`}>
       {/* Current weather */}
       {weatherData && (
         <div className="city-weather">
           {weatherData && (
             <>
-              <div className='flex-container'>
+              <div className='flex-container '>
                 <div className='box'>
                   <h2 className='align-center'>{weatherData.name}</h2>
                 </div>
@@ -63,17 +78,15 @@ const CityWeather: React.FC = () => {
                 <div className='box'>
                   <h1>Temperature: </h1>
                   <h2>{(weatherData.main.temp - 273.15).toFixed(2)}°C</h2>
-                  {/* <h2>{(weatherData.main.temp_min-273.15).toFixed(2)}°C</h2> */}
-                  {/* <h2>{(weatherData.main.temp_max-273.15).toFixed(2)}°C</h2> */}
                 </div>
-
 
                 <div className='flex-row box'>
                   <div className='box'>
                     <h1>Humidity: </h1>
                     <h2>{weatherData.main.humidity}%</h2>
                   </div>
-                  <div className='box'><h1>Wind Speed: </h1>
+                  <div className='box'>
+                    <h1>Wind Speed: </h1>
                     <h2> {weatherData.wind.speed} m/s </h2>
                   </div>
                 </div>
@@ -86,7 +99,6 @@ const CityWeather: React.FC = () => {
                         data: forecastData.map((forecast) => forecast.main.temp - 273.15),
                         backgroundColor: 'rgba(230, 126, 34, 0.6)',
                       }]
-                      
                     }}
                   />
                 </div>
